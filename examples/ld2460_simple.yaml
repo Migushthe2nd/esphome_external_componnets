@@ -16,6 +16,9 @@ esp32:
 # Enable logging
 logger:
   level: DEBUG
+  # Set UART logging to see all bytes (optional, can cause log spam)
+  # Uncomment the line below to enable detailed UART debugging:
+  # level: VERBOSE
 
 # Enable Home Assistant API
 api:
@@ -40,20 +43,13 @@ external_components:
       type: local
       path: components
 
-# UART configuration with debugging every byte
+# UART configuration
 uart:
   id: uart_bus
   tx_pin: ${uart_tx_pin}
   rx_pin: ${uart_rx_pin}
   baud_rate: ${uart_baud_rate}
   stop_bits: 1
-  debug:
-    direction: BOTH
-    dummy_receiver: true
-    after:
-      delimiter: "\n"
-    sequence:
-      - lambda: UARTDebug::log_hex(direction, bytes, ':');
 
 # LD2460 radar sensor
 ld2460:
