@@ -96,3 +96,12 @@ text_sensor:
     ld2460_id: ld2460_sensor
     version:
       name: "LD2460 Version"
+
+# Button to reboot mmwave sensor
+button:
+  - platform: ld2460
+    ld2460_id: ld2460_sensor
+    restart:
+      name: "Restart Radar"
+    factory_reset:
+      name: "Factory Reset Radar"
